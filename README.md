@@ -8,6 +8,7 @@
 - NVIDIA cuDNN 7.6.0
 - NVIDIA NCCL 2.4.6 (optimized for NVLink™ )
 - OpenCV 3.4.6
+- Python 3.5
 
 - **Note**: Although NCCL is packaged in the container, it does not effect TensorRT nor inferencing in any way.
 OpenMPI 3.1.3
