@@ -8,5 +8,5 @@ elif [ "$1" == "push" ]; then
 elif [ "$1" == "run" ]; then
 	echo "[info] Run the docker container"
 	xhost +
-	docker run -it --rm -v $(pwd):/workspace -w /workspace -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY aminehy/tensorrt-opencv-python3:v1.0
+	docker run -it --rm -v $(pwd):/workspace --runtime=nvidia -w /workspace -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY aminehy/tensorrt-opencv-python3:v1.0
 fi
