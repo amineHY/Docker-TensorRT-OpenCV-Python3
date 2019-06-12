@@ -30,6 +30,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	libtiff-dev \
 	libavformat-dev \
 	libpq-dev \
+	libgtk2.0-dev \
 	&& rm -rf /var/lib/apt/lists/*
 
 
