@@ -9,6 +9,7 @@
 - Python 3.5
 - jupyter-lab
 
+
 ## Run the docker container
 
 	`xhost +`
@@ -21,5 +22,9 @@
 ## Push the docker image to docker hub
 
 	`docker push aminehy/tensorrt-opencv-python3:v1.1`
+
+## After running the containter you can launch jupyter notebook by typing the following command in the terminal
+
+	`jupyter notebook --ip 0.0.0.0 --no-browser --allow-root`
 
 
