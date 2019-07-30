@@ -31,38 +31,25 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	libavformat-dev \
 	libpq-dev \
 	libgtk2.0-dev \
+        python-skimage \
 	python3-pip \
 	&& rm -rf /var/lib/apt/lists/*
 
-# Install pip
-RUN cd /usr/local/src && \
-    wget https://bootstrap.pypa.io/get-pip.py && \
-    python2 get-pip.py && \
-    pip2 install --upgrade pip && \
-    python3 get-pip.py && \
-    pip3 install --upgrade pip && \
-    rm -f get-pip.py
 
-# RUN python3 -m pip --version
-RUN pip3 install --user --upgrade pip
 
 # install necessary python packages
-RUN pip3 install numpy==1.16.4 \
+RUN pip install numpy==1.16.4 \
 	onnx==1.1.1 \
 	pycuda==2018.1.1 \
 	Pillow==6.0.0 \
 	wget==3.2 \
 	matplotlib==3.0.3 \
-	mahotas \
-	scikit-learn \
-	scikit-image \
-	jupyterlab
+	jupyter
+
 
 # Install opencv
 WORKDIR /
-
 ENV OPENCV_VERSION="3.4.6"
-
 RUN wget https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip \
 	&& unzip ${OPENCV_VERSION}.zip \
 	&& mkdir /opencv-${OPENCV_VERSION}/cmake_binary \
