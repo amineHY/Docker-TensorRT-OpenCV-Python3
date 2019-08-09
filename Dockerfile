@@ -1,13 +1,30 @@
+####################################################
+####################################################
+# Import a base docker image
+####################################################
+####################################################
+
 FROM nvcr.io/nvidia/tensorrt:19.05-py3
 
-LABEL maintainer "Amine Hadj-Youcef  <hadjyoucef.amine@gmail.com>"
+LABEL maintainer "M. Amine Hadj-Youcef  <hadjyoucef.amine@gmail.com>"
 
 
-# install python samples for tensorrt
-# RUN /opt/tensorrt/python/python_setup.sh
 
+####################################################
+####################################################
+# Install python dependencies 
+####################################################
+####################################################
 
+Run /opt/tensorrt/python/python_setup.sh
+
+####################################################
+####################################################
 # install prerequisites
+####################################################
+####################################################
+
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
 	protobuf-compiler \
 	geany \
@@ -32,9 +49,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	libpq-dev \
 	libgtk2.0-dev \
 	python3-pip \
+	libhdf5-dev \
+	python3-dev \
 	&& rm -rf /var/lib/apt/lists/*
 
-# Install pip
+####################################################
+####################################################
+# Install pip packages
+####################################################
+####################################################
+
 RUN cd /usr/local/src && \
     wget https://bootstrap.pypa.io/get-pip.py && \
     python2 get-pip.py && \
@@ -58,7 +82,12 @@ RUN pip3 install numpy==1.16.4 \
 	scikit-image \
 	jupyterlab
 
+####################################################
+####################################################
 # Install opencv
+####################################################
+####################################################
+
 WORKDIR /
 
 ENV OPENCV_VERSION="3.4.6"
@@ -88,13 +117,17 @@ RUN wget https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip \
 	&& rm /${OPENCV_VERSION}.zip \
 	&& rm -r /opencv-${OPENCV_VERSION}
 
-
 RUN  ln -s \
     /usr/lib/python3.5/dist-packages/cv2/python-3.5/cv2.cpython-35m-x86_64-linux-gnu.so \
 	/usr/local/lib/python3.5/dist-packages/cv2.so
 
+####################################################
+####################################################
 # set the working directory
-#WORKDIR /workspace
+####################################################
+####################################################
+
+WORKDIR /workspace
 
 
 
