@@ -18,6 +18,9 @@ LABEL maintainer "M. Amine Hadj-Youcef  <hadjyoucef.amine@gmail.com>"
 
 Run /opt/tensorrt/python/python_setup.sh
 
+
+
+
 ####################################################
 ####################################################
 # install prerequisites
@@ -70,17 +73,15 @@ RUN cd /usr/local/src && \
 # RUN python3 -m pip --version
 RUN pip3 install --user --upgrade pip
 
-# install necessary python packages
-RUN pip3 install numpy==1.16.4 \
-	onnx==1.1.1 \
-	pycuda==2018.1.1 \
-	Pillow==6.0.0 \
-	wget==3.2 \
-	matplotlib==3.0.3 \
-	mahotas \
-	scikit-learn \
-	scikit-image \
-	jupyterlab
+####################################################
+####################################################
+# Install requirements.txt
+####################################################
+####################################################
+
+# COPY requirements.txt /tmp/
+# RUN pip3 install --requirement /tmp/requirements.txt
+# find ./sample -name requirements.txt
 
 ####################################################
 ####################################################
