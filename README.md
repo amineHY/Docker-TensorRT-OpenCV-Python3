@@ -8,20 +8,21 @@
 - OpenCV 3.4.6
 - Python 3.5
 - jupyter-lab
-
+- Python requiremments from the base docker image
+- See Dockerfile for more informations
 
 ## Run the docker container
 
 	`xhost +`
-	`docker run -it --rm -v $(pwd):/workspace --runtime=nvidia -w /workspace -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY -p 8888:8888 aminehy/tensorrt-opencv-python3:v1.1`
+	`docker run -it --rm -v $(pwd):/workspace --runtime=nvidia -w /workspace -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY -p 8888:8888 aminehy/tensorrt-opencv-python3:v1.3`
 
 ## Build a docker image from the Dockefile
 
-	`docker build -t aminehy/tensorrt-opencv-python3:v1.1 .`
+	`docker build -t aminehy/tensorrt-opencv-python3:v1.3 .`
 
 ## Push the docker image to docker hub
 
-	`docker push aminehy/tensorrt-opencv-python3:v1.1`
+	`docker push aminehy/tensorrt-opencv-python3:v1.3`
 
 ## After running the containter you can launch jupyter notebook by typing the following command in the terminal
 
